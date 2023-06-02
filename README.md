@@ -1,9 +1,8 @@
-# Retail Store Discounts
+# Rest API Template
 
 Spring Boot Java application, which exposes an API such that given a
 bill, it finds the net payable amount
 
-please check the attched postman collection for API's
  
 # API's
 
