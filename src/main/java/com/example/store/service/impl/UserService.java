@@ -1,5 +1,6 @@
 package com.example.store.service.impl;
 
+import com.example.store.dao.UserDao;
 import com.example.store.data.Authority;
 import com.example.store.data.User;
 import com.example.store.dto.UserRequest;
@@ -30,6 +31,9 @@ public class UserService implements IUserService {
     @Value("${jwt.secret}")
     private String secret;
 
+    @Autowired
+    private UserDao userDao;
+
     @Override
     public User getUser(String username) {
         return userRepository.findByEmail(username).
@@ -58,5 +62,10 @@ public class UserService implements IUserService {
         Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
         Long userId = Long.valueOf((String) claims.get("userId"));
         return userRepository.findById(userId).orElseThrow(() -> new GenricException("User not Found", HttpStatus.NOT_FOUND));
+    }
+
+    @Override
+    public List<User> getAll(String query) {
+        return userDao.getAll(query);
     }
 }
