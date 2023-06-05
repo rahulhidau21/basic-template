@@ -3,10 +3,10 @@ package com.example.store.dao.impl;
 import com.example.store.dao.UserDao;
 import com.example.store.data.Authority;
 import com.example.store.data.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public class UserDaoImpl implements UserDao {
 
-    @Autowired
+    @PersistenceContext
     private EntityManager entityManager;
 
     @Override
